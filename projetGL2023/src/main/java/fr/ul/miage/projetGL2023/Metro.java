@@ -70,4 +70,17 @@ public class Metro {
     public void setStations(List<Station> stations) {
         this.stations = stations;
     }
+
+    public List<Station> Itineraire_passant_liste_point(Station dapart, Station arrivee,List<Station> liste){
+
+        return null;
+    }
+    public List<Station> Itiniraire_moins_changement(Station depart, Station arrivee){
+
+        return null;
+    }
+    public List<Station> Itiniraire_plus_rapide(Station dapart, Station arrivee){
+
+        return null;
+    }
 }
