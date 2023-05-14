@@ -66,8 +66,14 @@ public class Metro {
 
         return null;
     }
-    public List<Station> Itiniraire_plus_rapide(Station dapart, Station arrivee){
+    public List<Station> Itiniraire_plus_rapide(Station depart, Station arrivee){
+        Metro metro = new Metro();
+        Algorithme algo = new Algorithme();
 
+        depart = metro.getStations().get(0);
+        arrivee = metro.getStations().get(12);
+
+        List<Station> stationList = algo.algoCheminCourt(depart, arrivee);
         return null;
     }
 }

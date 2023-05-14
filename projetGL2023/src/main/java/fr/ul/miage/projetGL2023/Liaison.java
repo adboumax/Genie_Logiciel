@@ -37,4 +37,14 @@ public class Liaison {
     public void setNumero_ligne(int numero_ligne) {
         this.num_station = numero_ligne;
     }
+    public void setNum_station(int num_station) {
+        this.num_station = num_station;
+    }
+    public int getNum_station() {
+        return num_station;
+    }
+    @Override
+    public String toString() {
+        return temps + "s";
+    }
 }

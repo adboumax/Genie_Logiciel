@@ -22,6 +22,7 @@ public class Station {
     public Liaison liaison_after;
     public Liaison liaison_before;
     public int temps;
+    public double f;
 
 
     public String getNom() {
@@ -78,5 +79,8 @@ public class Station {
 
     public void setTemps(int temps) {
         this.temps = temps;
+    }
+    public void setF(double f) {
+        this.f = f;
     }
 }
