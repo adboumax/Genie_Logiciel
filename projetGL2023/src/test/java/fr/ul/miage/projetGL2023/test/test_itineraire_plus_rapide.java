@@ -83,12 +83,11 @@ public class test_itineraire_plus_rapide {
 
         Station Musee_grevin = new Station("Musée grévin",3,12,false, new Liaison(90,false,14), null,30);
         Station Place_italie = new Station("Place d'italie",3,13,false,new Liaison(180,false,3), new Liaison(90,false,12),30);
-        Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30);
 
         Station Montmartre = new Station("Montmartre",1,3,false,new Liaison(90,false,4), new Liaison(120,false,2),30);
         Station Louvre = new Station("Louvre",1,4,false,new Liaison(150,false,5), new Liaison(90,false,3),30);
 
-        List<Integer> trajet =  Arrays.asList(Musee_grevin.getNum_station(),Place_italie.getNum_station(),Montmartre2.getNum_station(),Montmartre.getNum_station(),Louvre.getNum_station());
+        List<Integer> trajet =  Arrays.asList(Musee_grevin.getNum_station(),Place_italie.getNum_station(),Montmartre.getNum_station(),Louvre.getNum_station());
         var ln= new Algorithme();
         var result = ln.algoCheminCourt(Musee_grevin,Louvre);
 
@@ -119,12 +118,10 @@ public class test_itineraire_plus_rapide {
         Station chatelet_les_halles = new Station("Chatelet les Halles",1,1,false, new Liaison(120,false,2), null,30);
         Station Pigalle = new Station("Pigalle",1,2,false,new Liaison(120,false,3), new Liaison(120,false,1),30);
         Station Montmartre = new Station("Montmartre",1,3,false,new Liaison(90,false,4), new Liaison(120,false,2),30);
-        Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30);
-        Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,10,false,new Liaison(90,false,14), new Liaison(250,false,3),30);
         Station Grigny = new Station("Grigny-la-grande-Borne",2,10,false,new Liaison(120,false,11), new Liaison(120,false,9),30);
         Station Pantheon = new Station("Panthéon",2,11,false,null, new Liaison(120,false,10),30);
 
-        List<Integer> trajet =  Arrays.asList(Pantheon.getNum_station(),Grigny.getNum_station(),Grigny_la_grande_borne2.getNum_station(),Montmartre2.getNum_station(),Montmartre.getNum_station(),Pigalle.getNum_station(),chatelet_les_halles.getNum_station());
+        List<Integer> trajet =  Arrays.asList(Pantheon.getNum_station(),Grigny.getNum_station(),Montmartre.getNum_station(),Pigalle.getNum_station(),chatelet_les_halles.getNum_station());
         var ln= new Algorithme();
         var result = ln.algoCheminCourt(Pantheon,chatelet_les_halles);
 
@@ -138,12 +135,10 @@ public class test_itineraire_plus_rapide {
         Station chatelet_les_halles = new Station("Chatelet les Halles",1,1,false, new Liaison(120,false,2), null,30);
         Station Pigalle = new Station("Pigalle",1,2,false,new Liaison(120,false,3), new Liaison(120,false,1),30);
         Station Montmartre = new Station("Montmartre",1,3,false,new Liaison(90,false,4), new Liaison(120,false,2),30);
-        Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30);
-        Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,10,false,new Liaison(90,false,14), new Liaison(250,false,3),30);
-        Station Grigny = new Station("Grigny-la-grande-Borne",2,10,false,new Liaison(120,false,11), new Liaison(120,false,9),30);
+         Station Grigny = new Station("Grigny-la-grande-Borne",2,10,false,new Liaison(120,false,11), new Liaison(120,false,9),30);
         Station Pantheon = new Station("Panthéon",2,11,false,null, new Liaison(120,false,10),30);
 
-        List<Integer> trajet =  Arrays.asList(chatelet_les_halles.getNum_station(),Pigalle.getNum_station(),Montmartre.getNum_station(),Montmartre2.getNum_station(),Grigny_la_grande_borne2.getNum_station(),Grigny.getNum_station(),Pantheon.getNum_station());
+        List<Integer> trajet =  Arrays.asList(chatelet_les_halles.getNum_station(),Pigalle.getNum_station(),Montmartre.getNum_station(),Grigny.getNum_station(),Pantheon.getNum_station());
         var ln= new Algorithme();
         var result = ln.algoCheminCourt(chatelet_les_halles,Pantheon);
 
