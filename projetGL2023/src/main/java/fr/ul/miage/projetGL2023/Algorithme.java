@@ -5,7 +5,7 @@ package fr.ul.miage.projetGL2023;
 
 public class Algorithme {
 
-    public static List<Station> algoCheminCourt(Station depart, Station arrivee) {
+    public static List<Integer> algoCheminCourt(Station depart, Station arrivee) {
         Metro metro = new Metro();
 
         //Stockage des stations à explorer
@@ -74,14 +74,14 @@ public class Algorithme {
                 return null;
     }
 
-            public static List<Station> refaireChemin (Map < Station, Station > provientDe, Station actuelle){
-                List<Station> chemin = new ArrayList<>();
+            public static List<Integer> refaireChemin (Map <Station, Station> provientDe, Station actuelle){
+                List<Integer> chemin = new ArrayList<>();
                 //On ajoute à la liste du chemin la station actuelle (permettra de retracer)
-                chemin.add(actuelle);
+                chemin.add(actuelle.getNum_station());
                 //Permet de reconstruire le chemin le plus court
                 while (provientDe.containsKey(actuelle)) {
                     actuelle = provientDe.get(actuelle);
-                    chemin.add(actuelle);
+                    chemin.add(actuelle.getNum_station());
                 }
                 //On inverse l'ordre de chemin
                 Collections.reverse(chemin);
