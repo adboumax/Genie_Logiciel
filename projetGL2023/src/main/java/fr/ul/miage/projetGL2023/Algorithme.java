@@ -11,6 +11,10 @@ public class Algorithme {
 
     public static List<Integer> algoCheminCourt(Station depart, Station arrivee){
 
+        if(depart == null || arrivee == null) {
+            throw new IllegalArgumentException("La station est vide");
+        }
+
         Metro metro = new Metro();
 
         //Stockage des stations à explorer

@@ -116,9 +116,6 @@ public class test_itineraire_plus_rapide {
     @DisplayName("itineraire le plus rapide double correspondance")
     public void itineraireRapideDoubleCorrespondance(){
 
-
-
-
         Station chatelet_les_halles = new Station("Chatelet les Halles",1,1,false, new Liaison(120,false,2), null,30);
         Station Pigalle = new Station("Pigalle",1,2,false,new Liaison(120,false,3), new Liaison(120,false,1),30);
         Station Montmartre = new Station("Montmartre",1,3,false,new Liaison(90,false,4), new Liaison(120,false,2),30);
