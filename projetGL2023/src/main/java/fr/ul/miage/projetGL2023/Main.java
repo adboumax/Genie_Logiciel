@@ -10,10 +10,10 @@ public class Main {
 
         //A changer en fonction de la géolocalisation
         Station depart = metro.getStations().get(0);
-        Station arrivee = metro.getStations().get(12);
+        Station arrivee = metro.getStations().get(6);
 
         //Appel de la fonction
-        List<Station> stationList = algo.algoCheminCourt(depart, arrivee);
+        List<Integer> stationList = algo.algoCheminCourt(depart, arrivee);
         stationList.forEach(System.out::println);
 
     }

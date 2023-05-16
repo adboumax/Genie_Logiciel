@@ -71,8 +71,8 @@ public class test_itineraire_plus_rapide {
 
 
         List<Integer> trajet =  Arrays.asList(Arc_de_Triomphe.getNum_station(),Bercy.getNum_station(),Louvre.getNum_station(),Montmartre.getNum_station(),Pigalle.getNum_station(),chatelet_les_halles.getNum_station());
-        var ln= new Metro();
-        var result = ln.Itiniraire_plus_rapide(Arc_de_Triomphe,chatelet_les_halles);
+        var ln= new Algorithme();
+        var result = ln.algoCheminCourt(Arc_de_Triomphe,chatelet_les_halles);
 
         assertThat(result).isEqualTo(trajet);
 
@@ -89,8 +89,8 @@ public class test_itineraire_plus_rapide {
         Station Louvre = new Station("Louvre",1,4,false,new Liaison(150,false,5), new Liaison(90,false,3),30);
 
         List<Integer> trajet =  Arrays.asList(Musee_grevin.getNum_station(),Place_italie.getNum_station(),Montmartre2.getNum_station(),Montmartre.getNum_station(),Louvre.getNum_station());
-        var ln= new Metro();
-        var result = ln.Itiniraire_plus_rapide(Musee_grevin,Louvre);
+        var ln= new Algorithme();
+        var result = ln.algoCheminCourt(Musee_grevin,Louvre);
 
         assertThat(result).isEqualTo(trajet);
     }
@@ -107,8 +107,8 @@ public class test_itineraire_plus_rapide {
 
 
         List<Integer> trajet =  Arrays.asList(Louvre.getNum_station(),Montmartre.getNum_station(),Montmartre2.getNum_station(),Place_italie.getNum_station(),Musee_grevin.getNum_station());
-        var ln= new Metro();
-        var result = ln.Itiniraire_plus_rapide(Louvre,Musee_grevin);
+        var ln= new Algorithme();
+        var result = ln.algoCheminCourt(Louvre,Musee_grevin);
 
         assertThat(result).isEqualTo(trajet);
     }
@@ -128,8 +128,8 @@ public class test_itineraire_plus_rapide {
         Station Pantheon = new Station("Panthéon",2,11,false,null, new Liaison(120,false,10),30);
 
         List<Integer> trajet =  Arrays.asList(Pantheon.getNum_station(),Grigny.getNum_station(),Grigny_la_grande_borne2.getNum_station(),Montmartre2.getNum_station(),Montmartre.getNum_station(),Pigalle.getNum_station(),chatelet_les_halles.getNum_station());
-        var ln= new Metro();
-        var result = ln.Itiniraire_plus_rapide(Pantheon,chatelet_les_halles);
+        var ln= new Algorithme();
+        var result = ln.algoCheminCourt(Pantheon,chatelet_les_halles);
 
         assertThat(result).isEqualTo(trajet);
 
@@ -147,8 +147,8 @@ public class test_itineraire_plus_rapide {
         Station Pantheon = new Station("Panthéon",2,11,false,null, new Liaison(120,false,10),30);
 
         List<Integer> trajet =  Arrays.asList(chatelet_les_halles.getNum_station(),Pigalle.getNum_station(),Montmartre.getNum_station(),Montmartre2.getNum_station(),Grigny_la_grande_borne2.getNum_station(),Grigny.getNum_station(),Pantheon.getNum_station());
-        var ln= new Metro();
-        var result = ln.Itiniraire_plus_rapide(chatelet_les_halles,Pantheon);
+        var ln= new Algorithme();
+        var result = ln.algoCheminCourt(chatelet_les_halles,Pantheon);
 
         assertThat(result).isEqualTo(trajet);
 

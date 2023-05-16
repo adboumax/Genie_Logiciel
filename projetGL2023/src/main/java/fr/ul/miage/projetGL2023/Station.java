@@ -1,6 +1,6 @@
 package fr.ul.miage.projetGL2023;
 
-public class Station {
+public class Station implements Comparable<Station> {
 
     public Station(String name, int ligne, int num_station, boolean probleme,
                    Liaison liaison_after, Liaison liaison_before, int temps)
@@ -82,5 +82,13 @@ public class Station {
     }
     public void setF(double f) {
         this.f = f;
+    }
+    @Override
+    public int compareTo(Station autre) {
+        return Double.compare(this.f, autre.f);
+    }
+    public String toString()
+    {
+        return nom;
     }
 }
