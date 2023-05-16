@@ -58,15 +58,15 @@ public class Metro {
     }
 
 
-    public List<Station> Itineraire_passant_liste_point(Station dapart, Station arrivee,List<Station> liste){
+    public List<Integer> Itineraire_passant_liste_point(Station dapart, Station arrivee,List<Station> liste){
 
         return null;
     }
-    public List<Station> Itiniraire_moins_changement(Station depart, Station arrivee){
+    public List<Integer> Itiniraire_moins_changement(Station depart, Station arrivee){
 
         return null;
     }
-    public List<Station> Itiniraire_plus_rapide(Station dapart, Station arrivee){
+    public List<Integer> Itiniraire_plus_rapide(Station dapart, Station arrivee){
 
         return null;
     }

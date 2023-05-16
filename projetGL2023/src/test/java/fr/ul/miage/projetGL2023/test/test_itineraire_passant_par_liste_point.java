@@ -59,7 +59,7 @@ public class test_itineraire_passant_par_liste_point {
         Station Bercy = new Station("Bercy",1,5,false,new Liaison(120,false,6), new Liaison(150,false,4),30);
         Station Arc_de_Triomphe = new Station("Arc de triomphe",1,6,false,null, new Liaison(120,false,5),30);
 
-        List<Station> trajet =  Arrays.asList(chatelet_les_halles,Pigalle,Montmartre,Louvre,Bercy,Arc_de_Triomphe);
+        List<Integer> trajet =  Arrays.asList(chatelet_les_halles.getNum_station(),Pigalle.getNum_station(),Montmartre.getNum_station(),Louvre.getNum_station(),Bercy.getNum_station(),Arc_de_Triomphe.getNum_station());
         var ln= new Metro();
         List<Station> list =  Arrays.asList(Montmartre);
         var result = ln.Itineraire_passant_liste_point(chatelet_les_halles,Arc_de_Triomphe,list);
@@ -76,7 +76,7 @@ public class test_itineraire_passant_par_liste_point {
         Station Bercy = new Station("Bercy",1,5,false,new Liaison(120,false,6), new Liaison(150,false,4),30);
         Station Arc_de_Triomphe = new Station("Arc de triomphe",1,6,false,null, new Liaison(120,false,5),30);
 
-        List<Station> trajet =  Arrays.asList(Arc_de_Triomphe,Bercy,Louvre,Montmartre,Pigalle,chatelet_les_halles);
+        List<Integer> trajet =  Arrays.asList(Arc_de_Triomphe.getNum_station(),Bercy.getNum_station(),Louvre.getNum_station(),Montmartre.getNum_station(),Pigalle.getNum_station(),chatelet_les_halles.getNum_station());
         var ln= new Metro();
         List<Station> list =  Arrays.asList(Montmartre,Bercy);
         var result = ln.Itineraire_passant_liste_point(Arc_de_Triomphe,chatelet_les_halles,list);
@@ -95,7 +95,7 @@ public class test_itineraire_passant_par_liste_point {
         Station La_Defense = new Station("La Défense",2,7,false,new Liaison(60,false,8), null,30);
         Station Invalides = new Station("Invalides",2,8,false,new Liaison(210,false,4), new Liaison(60,false,7),30);
         Station Louvre2 = new Station("Louvre",2,4,false,new Liaison(30,false,10), new Liaison(210,false,8),30);
-        List<Station> trajet =  Arrays.asList(chatelet_les_halles,Pigalle,Montmartre,Louvre,Louvre2,Invalides,La_Defense,Invalides,Louvre2,Louvre,Bercy,Arc_de_Triomphe);
+        List<Integer> trajet =  Arrays.asList(chatelet_les_halles.getNum_station(),Pigalle.getNum_station(),Montmartre.getNum_station(),Louvre.getNum_station(),Louvre2.getNum_station(),Invalides.getNum_station(),La_Defense.getNum_station(),Invalides.getNum_station(),Louvre2.getNum_station(),Louvre.getNum_station(),Bercy.getNum_station(),Arc_de_Triomphe.getNum_station());
         var ln= new Metro();
         List<Station> list =  Arrays.asList(La_Defense);
         var result = ln.Itineraire_passant_liste_point(chatelet_les_halles,Arc_de_Triomphe,list);
@@ -113,7 +113,7 @@ public class test_itineraire_passant_par_liste_point {
         Station La_Defense = new Station("La Défense",2,7,false,new Liaison(60,false,8), null,30);
         Station Invalides = new Station("Invalides",2,8,false,new Liaison(210,false,4), new Liaison(60,false,7),30);
         Station Louvre2 = new Station("Louvre",2,4,false,new Liaison(30,false,10), new Liaison(210,false,8),30);
-        List<Station> trajet =  Arrays.asList(Arc_de_Triomphe,Bercy,Louvre,Louvre2,Invalides,La_Defense,Invalides,Louvre2,Louvre,Montmartre,Pigalle,chatelet_les_halles);
+        List<Integer> trajet =  Arrays.asList(Arc_de_Triomphe.getNum_station(),Bercy.getNum_station(),Louvre.getNum_station(),Louvre2.getNum_station(),Invalides.getNum_station(),La_Defense.getNum_station(),Invalides.getNum_station(),Louvre2.getNum_station(),Louvre.getNum_station(),Montmartre.getNum_station(),Pigalle.getNum_station(),chatelet_les_halles.getNum_station());
         var ln= new Metro();
         List<Station> list =  Arrays.asList(La_Defense);
         var result = ln.Itineraire_passant_liste_point(Arc_de_Triomphe,chatelet_les_halles,list);
@@ -139,7 +139,7 @@ public class test_itineraire_passant_par_liste_point {
         Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30);
         Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,10,false,new Liaison(90,false,14), new Liaison(250,false,3),30);
 
-        List<Station> trajet =  Arrays.asList(chatelet_les_halles,Pigalle,Montmartre,Montmartre2,Grigny_la_grande_borne2,Grigny,Pantheon,Grigny,Billancourt,Louvre2,Invalides,La_Defense,Invalides,Louvre2,Louvre,Bercy,Arc_de_Triomphe);
+        List<Integer> trajet =  Arrays.asList(chatelet_les_halles.getNum_station(),Pigalle.getNum_station(),Montmartre.getNum_station(),Montmartre2.getNum_station(),Grigny_la_grande_borne2.getNum_station(),Grigny.getNum_station(),Pantheon.getNum_station(),Grigny.getNum_station(),Billancourt.getNum_station(),Louvre2.getNum_station(),Invalides.getNum_station(),La_Defense.getNum_station(),Invalides.getNum_station(),Louvre2.getNum_station(),Louvre.getNum_station(),Bercy.getNum_station(),Arc_de_Triomphe.getNum_station());
         var ln= new Metro();
 
         List<Station> list =  Arrays.asList(La_Defense,Pantheon);
@@ -165,7 +165,7 @@ public class test_itineraire_passant_par_liste_point {
         Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30);
         Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,10,false,new Liaison(90,false,14), new Liaison(250,false,3),30);
 
-        List<Station> trajet =  Arrays.asList(Arc_de_Triomphe,Bercy,Louvre,Louvre2,Invalides,Louvre2,Billancourt,Grigny,Pantheon,Grigny,Grigny_la_grande_borne2,Montmartre2,Montmartre,Pigalle,chatelet_les_halles);
+        List<Integer> trajet =  Arrays.asList(Arc_de_Triomphe.getNum_station(),Bercy.getNum_station(),Louvre.getNum_station(),Louvre2.getNum_station(),Invalides.getNum_station(),Louvre2.getNum_station(),Billancourt.getNum_station(),Grigny.getNum_station(),Pantheon.getNum_station(),Grigny.getNum_station(),Grigny_la_grande_borne2.getNum_station(),Montmartre2.getNum_station(),Montmartre.getNum_station(),Pigalle.getNum_station(),chatelet_les_halles.getNum_station());
         var ln= new Metro();
 
         List<Station> list =  Arrays.asList(Pantheon,La_Defense);
