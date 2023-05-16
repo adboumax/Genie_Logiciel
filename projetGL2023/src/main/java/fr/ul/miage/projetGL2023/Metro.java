@@ -58,22 +58,24 @@ public class Metro {
     }
 
 
-    public List<Station> Itineraire_passant_liste_point(Station dapart, Station arrivee,List<Station> liste){
+    public List<Integer> Itineraire_passant_liste_point(Station dapart, Station arrivee,List<Station> liste){
 
         return null;
     }
-    public List<Station> Itiniraire_moins_changement(Station depart, Station arrivee){
+    public List<Integer> Itiniraire_moins_changement(Station depart, Station arrivee){
 
         return null;
     }
+
     public List<Station> Itiniraire_plus_rapide(Station depart, Station arrivee){
         Metro metro = new Metro();
         Algorithme algo = new Algorithme();
 
+
         depart = metro.getStations().get(0);
         arrivee = metro.getStations().get(12);
 
-        List<Station> stationList = algo.algoCheminCourt(depart, arrivee);
+        List<Integer> stationList = algo.algoCheminCourt(depart, arrivee);
         return null;
     }
 }

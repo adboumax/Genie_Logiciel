@@ -50,7 +50,7 @@ public class test_itineraire_moins_changement {
         Station Louvre = new Station("Louvre",1,4,false,new Liaison(150,false,5), new Liaison(90,false,3),30);
         Station Bercy = new Station("Bercy",1,5,false,new Liaison(120,false,6), new Liaison(150,false,4),30);
 
-        List<Station> trajet =  Arrays.asList(chatelet_les_halles,Pigalle,Montmartre,Louvre,Bercy,Arc_de_Triomphe);
+        List<Integer> trajet =  Arrays.asList(chatelet_les_halles.getNum_station(),Pigalle.getNum_station(),Montmartre.getNum_station(),Louvre.getNum_station(),Bercy.getNum_station(),Arc_de_Triomphe.getNum_station());
         var ln= new Metro();
         var result = ln.Itiniraire_moins_changement(chatelet_les_halles,Arc_de_Triomphe);
         assertThat(result).isEqualTo(trajet);
@@ -74,7 +74,7 @@ public class test_itineraire_moins_changement {
                 new Liaison(30,false,1),90);
         Station Champ_de_mars = new Station("Champ de mars",3,18,false,new Liaison(30,false,1),
                 new Liaison(30,false,1),90);
-        List<Station> trajet =  Arrays.asList(Musee_grevin,Place_italie,Montmartre2,Grigny_la_grande_borne2,Bastille,Bercy2,Champ_de_mars);
+        List<Integer> trajet =  Arrays.asList(Musee_grevin.getNum_station(),Place_italie.getNum_station(),Montmartre2.getNum_station(),Grigny_la_grande_borne2.getNum_station(),Bastille.getNum_station(),Bercy2.getNum_station(),Champ_de_mars.getNum_station());
         var ln= new Metro();
         var result = ln.Itiniraire_moins_changement(Musee_grevin,Champ_de_mars);
         assertThat(result).isEqualTo(trajet);
@@ -91,7 +91,7 @@ public class test_itineraire_moins_changement {
         Station Bercy2 = new Station("Bercy",3,5,false,new Liaison(90,false,15), new Liaison(180,false,14),30);
         Station Champ_de_mars = new Station("Champ de mars",3,15,false,null, new Liaison(90,false,5),30);
 
-        List<Station> trajet =  Arrays.asList(Musee_grevin,Place_italie,Montmartre2,Grigny_la_grande_borne2,Bastille,Bercy2,Champ_de_mars);
+        List<Integer> trajet =  Arrays.asList(Musee_grevin.getNum_station(),Place_italie.getNum_station(),Montmartre2.getNum_station(),Grigny_la_grande_borne2.getNum_station(),Bastille.getNum_station(),Bercy2.getNum_station(),Champ_de_mars.getNum_station());
         var ln= new Metro();
         var result = ln.Itiniraire_moins_changement(Champ_de_mars,Musee_grevin);
         assertThat(result).isEqualTo(trajet);
