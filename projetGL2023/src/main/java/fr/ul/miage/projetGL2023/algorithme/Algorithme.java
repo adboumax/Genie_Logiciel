@@ -107,4 +107,24 @@ public class Algorithme {
                 .collect(Collectors.toList())
                 .get(0);
     }
+
+    public List<Integer> algorithmeSelonPoint(Station depart, Station arrivee, List<Integer> pointPassage)
+    {
+        Metro metro             = new Metro();
+        Station current         = depart;
+        ArrayList<Integer> resultat = new ArrayList<Integer>();
+
+        if(depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station() ) {
+            throw new IllegalArgumentException("La station est vide");
+        }
+
+        for (Integer i:
+                pointPassage) {
+            resultat.addAll(algoCheminCourt(current, getStationSelonNum(metro.getStations(), i)));
+            current = metro.getStations().get(i);
+        }
+
+        resultat.addAll(algoCheminCourt(current, arrivee));
+        return resultat;
+    }
 }

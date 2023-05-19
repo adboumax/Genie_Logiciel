@@ -17,7 +17,7 @@ public class Main {
         Station arrivee = metro.getStations().get(6);
 
         //Appel de la fonction
-        List<Integer> stationList = algo.algoCheminCourt(depart, arrivee);
+        List<Integer> stationList = algo.algorithmeSelonPoint(depart, arrivee, List.of(metro.getStations().get(0).getNum_station()));
         stationList.forEach(System.out::println);
 
     }
