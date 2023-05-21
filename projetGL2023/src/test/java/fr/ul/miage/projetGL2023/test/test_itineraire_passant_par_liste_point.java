@@ -7,6 +7,7 @@ import fr.ul.miage.projetGL2023.model.Station;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class test_itineraire_passant_par_liste_point {
         Station Passage2 = metro.getStations().get(7);
         List<Integer> list = Arrays.asList(Passage1.getNum_station(), Passage2.getNum_station());
         Algorithme algorithme = new Algorithme();
-        assertThatThrownBy(()-> algorithme.algorithmeSelonPoint(x, y,list)).isExactlyInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()-> algorithme.algorithmeSelonPoint(x, y, list, metro)).isExactlyInstanceOf(IllegalArgumentException.class);
     }
     @Test
     @DisplayName("itineraire passant par liste de point Station 2 vide")
@@ -38,7 +39,7 @@ public class test_itineraire_passant_par_liste_point {
         Station Passage2 = metro.getStations().get(7);
         List<Integer> list = Arrays.asList(Passage1.getNum_station(), Passage2.getNum_station());
         Algorithme algorithme = new Algorithme();
-        assertThatThrownBy(()-> algorithme.algorithmeSelonPoint(x, y,list)).isExactlyInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()-> algorithme.algorithmeSelonPoint(x, y, list, metro)).isExactlyInstanceOf(IllegalArgumentException.class);
     }
     @Test
     @DisplayName("itineraire passant par listes de point les 2 stations vide")
@@ -50,7 +51,7 @@ public class test_itineraire_passant_par_liste_point {
         Station Passage2 = metro.getStations().get(7);
         List<Integer> list = Arrays.asList(Passage1.getNum_station(), Passage2.getNum_station());
         Algorithme algorithme = new Algorithme();
-        assertThatThrownBy(()-> algorithme.algorithmeSelonPoint(x, y,list)).isExactlyInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()-> algorithme.algorithmeSelonPoint(x, y, list, metro)).isExactlyInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -68,7 +69,7 @@ public class test_itineraire_passant_par_liste_point {
         List<Integer> trajet =  Arrays.asList(chatelet_les_halles.getNum_station(),Pigalle.getNum_station(), Montmartre.getNum_station(),Louvre.getNum_station(),Bercy.getNum_station(),Arc_de_Triomphe.getNum_station());
         Algorithme algorithme = new Algorithme();
         List<Integer> list = List.of(Montmartre.getNum_station());
-        List result = algorithme.algorithmeSelonPoint(chatelet_les_halles,Arc_de_Triomphe,list);
+        List result = algorithme.algorithmeSelonPoint(chatelet_les_halles,Arc_de_Triomphe,list, metro);
         assertThat(result).isEqualTo(trajet);
 
     }
@@ -90,7 +91,7 @@ public class test_itineraire_passant_par_liste_point {
                 ,Pigalle.getNum_station(),chatelet_les_halles.getNum_station());
         Algorithme algorithme = new Algorithme();
         List<Integer> list =  Arrays.asList(Montmartre.getNum_station(),Bercy.getNum_station());
-        var result = algorithme.algorithmeSelonPoint(Arc_de_Triomphe,chatelet_les_halles,list);
+        var result = algorithme.algorithmeSelonPoint(Arc_de_Triomphe,chatelet_les_halles,list, metro);
         assertThat(result).isEqualTo(trajet);
 
     }
@@ -111,7 +112,7 @@ public class test_itineraire_passant_par_liste_point {
         List<Integer> trajet =  Arrays.asList(chatelet_les_halles.getNum_station(),Pigalle.getNum_station(),Montmartre.getNum_station(),Louvre.getNum_station(),Invalides.getNum_station(),La_Defense.getNum_station(),Invalides.getNum_station(),Louvre2.getNum_station(),Bercy.getNum_station(),Arc_de_Triomphe.getNum_station());
         Algorithme algorithme = new Algorithme();
         List<Integer> list =  Arrays.asList(La_Defense.getNum_station());
-        var result = algorithme.algorithmeSelonPoint(chatelet_les_halles,Arc_de_Triomphe,list);
+        var result = algorithme.algorithmeSelonPoint(chatelet_les_halles,Arc_de_Triomphe,list, metro);
         assertThat(result).isEqualTo(trajet);
     }
     @Test
@@ -131,7 +132,7 @@ public class test_itineraire_passant_par_liste_point {
         List<Integer> trajet =  Arrays.asList(Arc_de_Triomphe.getNum_station(),Bercy.getNum_station(),Louvre.getNum_station(),Invalides.getNum_station(),La_Defense.getNum_station(),Invalides.getNum_station(),Louvre2.getNum_station(),Montmartre.getNum_station(),Pigalle.getNum_station(),chatelet_les_halles.getNum_station());
         Algorithme algorithme = new Algorithme();
         List<Integer> list =  Arrays.asList(La_Defense.getNum_station());
-        var result = algorithme.algorithmeSelonPoint(Arc_de_Triomphe,chatelet_les_halles,list);
+        var result = algorithme.algorithmeSelonPoint(Arc_de_Triomphe,chatelet_les_halles,list, metro);
         assertThat(result).isEqualTo(trajet);
     }
 
@@ -162,7 +163,7 @@ public class test_itineraire_passant_par_liste_point {
         var algorithme = new Algorithme();
 
         List<Integer> list =  Arrays.asList(La_Defense.getNum_station(),Pantheon.getNum_station());
-        List result = algorithme.algorithmeSelonPoint(chatelet_les_halles,Arc_de_Triomphe,list);
+        List result = algorithme.algorithmeSelonPoint(chatelet_les_halles,Arc_de_Triomphe,list, metro);
         assertThat(result).isEqualTo(trajet);
     }
     @Test
@@ -189,7 +190,7 @@ public class test_itineraire_passant_par_liste_point {
 
         List<Integer> list =  Arrays.asList(Pantheon.getNum_station(),La_Defense.getNum_station());
         Algorithme algorithme = new Algorithme();
-        var result = algorithme.algorithmeSelonPoint(Arc_de_Triomphe,chatelet_les_halles,list);
+        var result = algorithme.algorithmeSelonPoint(Arc_de_Triomphe,chatelet_les_halles,list, metro);
         assertThat(result).isEqualTo(trajet);
     }
     @Test
@@ -201,6 +202,42 @@ public class test_itineraire_passant_par_liste_point {
 
         List<Integer> list = Arrays.asList(Arc_de_Triomphe.getNum_station(), Bercy.getNum_station());
         Algorithme algorithme = new Algorithme();
-        assertThatThrownBy(()-> algorithme.algorithmeSelonPoint(Arc_de_Triomphe, Arc_de_Triomphe,list)).isExactlyInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()-> algorithme.algorithmeSelonPoint(Arc_de_Triomphe, Arc_de_Triomphe,list, metro)).isExactlyInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("itineraire le plus rapide problème liason")
+    public void itineraireRapideSimpleProblemeLiason(){
+        Metro metro = new Metro();
+        metro.getStations().get(0).getLiaison_after().setProbleme(true);
+        Station chatelet_les_halles = metro.getStations().get(0);
+        Station Pigalle = metro.getStations().get(1);
+        Station Bercy =  metro.getStations().get(4);
+        Station Arc_de_Triomphe = metro.getStations().get(5);
+
+        Algorithme ln= new Algorithme();
+        List<Integer> list = Arrays.asList(Arc_de_Triomphe.getNum_station(), Bercy.getNum_station());
+        var result = ln.algorithmeSelonPoint(chatelet_les_halles,Pigalle, list, metro);
+
+        assertThat(result).isEqualTo(new ArrayList<Integer>());
+
+    }
+
+    @Test
+    @DisplayName("itineraire le plus rapide simple problème Station")
+    public void itineraireRapideSimpleStation(){
+        Metro metro = new Metro();
+        Station chatelet_les_halles = metro.getStations().get(0);
+        metro.getStations().get(1).setProbleme(true);
+        Station Montmartre = metro.getStations().get(2);
+        Station Bercy =  metro.getStations().get(4);
+        Station Arc_de_Triomphe = metro.getStations().get(5);
+
+        Algorithme ln= new Algorithme();
+        List<Integer> list = Arrays.asList(Arc_de_Triomphe.getNum_station(), Bercy.getNum_station());
+        var result = ln.algorithmeSelonPoint(chatelet_les_halles,Montmartre, list,metro);
+
+        assertThat(result).isEqualTo(new ArrayList<Integer>());
+
     }
 }

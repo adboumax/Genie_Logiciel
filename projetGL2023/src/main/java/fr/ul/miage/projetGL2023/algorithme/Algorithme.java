@@ -9,13 +9,11 @@ import java.util.stream.Collectors;
 
 public class Algorithme {
 
-    public static List<Integer> algoCheminCourt(Station depart, Station arrivee){
+    public static List<Integer> algoCheminCourt(Station depart, Station arrivee, Metro metro){
 
         if(depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station() ) {
             throw new IllegalArgumentException("La station est vide");
         }
-
-        Metro metro = new Metro();
 
         //Stockage des stations à explorer
         PriorityQueue<Station> exploration = new PriorityQueue<>();
@@ -40,22 +38,26 @@ public class Algorithme {
                 return refaireChemin(provientDe, actuelle);
             }
             dejaExplore.add(actuelle);
-            List<Liaison> liaisonsAutours = metro.stations.stream().filter(x -> x.liaison_after!=null && x.liaison_after.getNum_station() == actuelle.getNum_station())
+            List<Liaison> liaisonsAutours = metro.stations.stream().filter(x -> x.liaison_after!=null && x.liaison_after.getNum_station() == actuelle.getNum_station()
+                    && !x.isProbleme() && !actuelle.getLiaison_before().isProbleme())
                     .map(x -> actuelle.getLiaison_before())
                     .collect(Collectors.toList());
 
-            liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.liaison_before!=null && x.liaison_before.getNum_station() == actuelle.getNum_station())
+            liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.liaison_before!=null && x.liaison_before.getNum_station() == actuelle.getNum_station()
+                    && !x.isProbleme() && !actuelle.getLiaison_after().isProbleme())
                     .map(x -> actuelle.getLiaison_after())
                     .collect(Collectors.toList()));
 
             liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.getNum_station() == actuelle.getNum_station()
                             && x.getLigne() != actuelle.getLigne()
+                            && !x.isProbleme()
                             && x.liaison_after!=null)
                     .map(x -> x.getLiaison_before())
                     .collect(Collectors.toList()));
 
             liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.getNum_station() == actuelle.getNum_station()
                             && x.getLigne() != actuelle.getLigne()
+                            && !x.isProbleme()
                             && x.liaison_before!=null)
                     .map(x -> x.getLiaison_after())
                     .collect(Collectors.toList()));
@@ -108,9 +110,8 @@ public class Algorithme {
                 .get(0);
     }
 
-    public List<Integer> algorithmeSelonPoint(Station depart, Station arrivee, List<Integer> pointPassage)
+    public List<Integer> algorithmeSelonPoint(Station depart, Station arrivee, List<Integer> pointPassage, Metro metro)
     {
-        Metro metro             = new Metro();
         Station current         = depart;
         ArrayList<Integer> resultat = new ArrayList<Integer>();
 
@@ -120,11 +121,24 @@ public class Algorithme {
 
         for (Integer i:
                 pointPassage) {
-            resultat.addAll(algoCheminCourt(current, getStationSelonNum(metro.getStations(), i)));
-            current = metro.getStations().get(i);
+            List<Integer> currentPath = algoCheminCourt(current, getStationSelonNum(metro.getStations(), i), metro);
+            if(currentPath != null)
+            {
+                resultat.addAll(currentPath);
+                current = metro.getStations().get(i);
+            }
+            else {
+                break;
+            }
+
         }
 
-        resultat.addAll(algoCheminCourt(current, arrivee));
+        List<Integer> currentPath = algoCheminCourt(current, arrivee,metro);
+        if(currentPath != null)
+        {
+            resultat.addAll(currentPath);
+        }
+
         return resultat;
     }
 }
