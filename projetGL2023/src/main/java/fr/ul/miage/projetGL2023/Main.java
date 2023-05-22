@@ -14,19 +14,13 @@ public class Main {
 
         //A changer en fonction de la géolocalisation
         Station depart = metro.getStations().get(0);
-        metro.getStations().get(1).setProbleme(true);
-        Station arrivee = metro.getStations().get(2);
+
+        Station arrivee = metro.getStations().get(6);
 
         //Appel de la fonction
-        List<Integer> stationList = algo.algoCheminCourt(depart, arrivee, metro);
-        if(stationList != null)
-        {
-            stationList.forEach(System.out::println);
-        }
-        else
-        {
-            System.out.println("Il y a pas de chemin disponible actuellement !");
-        }
+        List<Integer> stationList = algo.algoCheminCourt(depart, arrivee,metro);
+        stationList.forEach(System.out::println);
+
 
     }
 }

@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 
 public class Algorithme {
 
-    public static List<Integer> algoCheminCourt(Station depart, Station arrivee, Metro metro){
+    public static List<Integer> algoCheminCourt(Station depart, Station arrivee, Metro metro) {
 
-        if(depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station() ) {
+        if (depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station()) {
             throw new IllegalArgumentException("La station est vide");
         }
 
@@ -38,27 +38,27 @@ public class Algorithme {
                 return refaireChemin(provientDe, actuelle);
             }
             dejaExplore.add(actuelle);
-            List<Liaison> liaisonsAutours = metro.stations.stream().filter(x -> x.liaison_after!=null && x.liaison_after.getNum_station() == actuelle.getNum_station()
-                    && !x.isProbleme() && !actuelle.getLiaison_before().isProbleme())
+            List<Liaison> liaisonsAutours = metro.stations.stream().filter(x -> x.liaison_after != null && x.liaison_after.getNum_station() == actuelle.getNum_station()
+                            && !x.isProbleme() && !actuelle.getLiaison_before().isProbleme())
                     .map(x -> actuelle.getLiaison_before())
                     .collect(Collectors.toList());
 
-            liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.liaison_before!=null && x.liaison_before.getNum_station() == actuelle.getNum_station()
-                    && !x.isProbleme() && !actuelle.getLiaison_after().isProbleme())
+            liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.liaison_before != null && x.liaison_before.getNum_station() == actuelle.getNum_station()
+                            && !x.isProbleme() && !actuelle.getLiaison_after().isProbleme())
                     .map(x -> actuelle.getLiaison_after())
                     .collect(Collectors.toList()));
 
             liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.getNum_station() == actuelle.getNum_station()
                             && x.getLigne() != actuelle.getLigne()
                             && !x.isProbleme()
-                            && x.liaison_after!=null)
+                            && x.liaison_after != null)
                     .map(x -> x.getLiaison_before())
                     .collect(Collectors.toList()));
 
             liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.getNum_station() == actuelle.getNum_station()
                             && x.getLigne() != actuelle.getLigne()
                             && !x.isProbleme()
-                            && x.liaison_before!=null)
+                            && x.liaison_before != null)
                     .map(x -> x.getLiaison_after())
                     .collect(Collectors.toList()));
 
@@ -103,42 +103,41 @@ public class Algorithme {
         return Math.sqrt(dx * dx + dy * dy);
     }
 
-    public static Station getStationSelonNum(List<Station> list, int num)
-    {
+    public static Station getStationSelonNum(List<Station> list, int num) {
         return list.stream().filter(x -> x.getNum_station() == num)
                 .collect(Collectors.toList())
                 .get(0);
     }
 
-    public List<Integer> algorithmeSelonPoint(Station depart, Station arrivee, List<Integer> pointPassage, Metro metro)
-    {
-        Station current         = depart;
+    public List<Integer> algorithmeSelonPoint(Station depart, Station arrivee, List<Integer> pointPassage, Metro metro) {
+        Station current = depart;
         ArrayList<Integer> resultat = new ArrayList<Integer>();
 
-        if(depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station() ) {
+        if (depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station()) {
             throw new IllegalArgumentException("La station est vide");
         }
 
-        for (Integer i:
+        for (Integer i :
                 pointPassage) {
             List<Integer> currentPath = algoCheminCourt(current, getStationSelonNum(metro.getStations(), i), metro);
-            if(currentPath != null)
-            {
+            if (currentPath != null) {
                 resultat.addAll(currentPath);
                 current = metro.getStations().get(i);
-            }
-            else {
+            } else {
                 break;
             }
 
         }
 
-        List<Integer> currentPath = algoCheminCourt(current, arrivee,metro);
-        if(currentPath != null)
-        {
+        List<Integer> currentPath = algoCheminCourt(current, arrivee, metro);
+        if (currentPath != null) {
             resultat.addAll(currentPath);
         }
 
         return resultat;
+    }
+
+    public static List<Integer> algoMoinsChangement(Station depart, Station arrivee, Metro metro) {
+        return null;
     }
 }

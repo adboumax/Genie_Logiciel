@@ -1,5 +1,6 @@
 package fr.ul.miage.projetGL2023.test;
 
+
 import fr.ul.miage.projetGL2023.algorithme.Algorithme;
 import fr.ul.miage.projetGL2023.model.Liaison;
 import fr.ul.miage.projetGL2023.model.Metro;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +22,7 @@ public class test_itineraire_passant_par_liste_point {
     @Test
     @DisplayName("itineraire le plus rapide Station 1 vide")
     public void itinerairePassantListePointStation1Vide(){
+
         Metro metro = new Metro();
         Station x =  null;
         Station y =  metro.getStations().get(10);
@@ -28,10 +31,12 @@ public class test_itineraire_passant_par_liste_point {
         List<Integer> list = Arrays.asList(Passage1.getNum_station(), Passage2.getNum_station());
         Algorithme algorithme = new Algorithme();
         assertThatThrownBy(()-> algorithme.algorithmeSelonPoint(x, y, list, metro)).isExactlyInstanceOf(IllegalArgumentException.class);
+
     }
     @Test
     @DisplayName("itineraire passant par liste de point Station 2 vide")
     public void itinerairePassantParListeDePointStation2Vide(){
+
         Metro metro = new Metro();
         Station y =  null;
         Station x =  metro.getStations().get(10);
@@ -40,6 +45,7 @@ public class test_itineraire_passant_par_liste_point {
         List<Integer> list = Arrays.asList(Passage1.getNum_station(), Passage2.getNum_station());
         Algorithme algorithme = new Algorithme();
         assertThatThrownBy(()-> algorithme.algorithmeSelonPoint(x, y, list, metro)).isExactlyInstanceOf(IllegalArgumentException.class);
+
     }
     @Test
     @DisplayName("itineraire passant par listes de point les 2 stations vide")
@@ -52,11 +58,13 @@ public class test_itineraire_passant_par_liste_point {
         List<Integer> list = Arrays.asList(Passage1.getNum_station(), Passage2.getNum_station());
         Algorithme algorithme = new Algorithme();
         assertThatThrownBy(()-> algorithme.algorithmeSelonPoint(x, y, list, metro)).isExactlyInstanceOf(IllegalArgumentException.class);
+
     }
 
     @Test
     @DisplayName("itineraire passant par liste de point simple (point sur le chemin")
     public void itinerairePassantparListeDePointSimple(){
+
         Metro metro = new Metro();
 
         Station chatelet_les_halles = metro.getStations().get(0);
@@ -70,12 +78,14 @@ public class test_itineraire_passant_par_liste_point {
         Algorithme algorithme = new Algorithme();
         List<Integer> list = List.of(Montmartre.getNum_station());
         List result = algorithme.algorithmeSelonPoint(chatelet_les_halles,Arc_de_Triomphe,list, metro);
+
         assertThat(result).isEqualTo(trajet);
 
     }
     @Test
     @DisplayName("itineraire passant par liste de point simple 2 ( 2 points sur le chemin")
     public void itineraireListeDePointSimple2(){
+
         Metro metro = new Metro();
 
         Station chatelet_les_halles = metro.getStations().get(0);
@@ -92,12 +102,14 @@ public class test_itineraire_passant_par_liste_point {
         Algorithme algorithme = new Algorithme();
         List<Integer> list =  Arrays.asList(Montmartre.getNum_station(),Bercy.getNum_station());
         var result = algorithme.algorithmeSelonPoint(Arc_de_Triomphe,chatelet_les_halles,list, metro);
+
         assertThat(result).isEqualTo(trajet);
 
     }
     @Test
     @DisplayName("itineraire passant par liste de point simple (1 point à l'opposée)")
     public void itinerairePassantParUnPointOpposée(){
+
         Metro metro = new Metro();
 
         Station chatelet_les_halles = metro.getStations().get(0);
@@ -113,11 +125,13 @@ public class test_itineraire_passant_par_liste_point {
         Algorithme algorithme = new Algorithme();
         List<Integer> list =  Arrays.asList(La_Defense.getNum_station());
         var result = algorithme.algorithmeSelonPoint(chatelet_les_halles,Arc_de_Triomphe,list, metro);
+
         assertThat(result).isEqualTo(trajet);
     }
     @Test
     @DisplayName("itineraire passant par liste de point simple (1 point à l'opposée sens inverse)")
     public void itinerairePassantParUnPointOpposéeSensinverse(){
+
         Metro metro = new Metro();
 
         Station chatelet_les_halles = metro.getStations().get(0);
@@ -133,12 +147,14 @@ public class test_itineraire_passant_par_liste_point {
         Algorithme algorithme = new Algorithme();
         List<Integer> list =  Arrays.asList(La_Defense.getNum_station());
         var result = algorithme.algorithmeSelonPoint(Arc_de_Triomphe,chatelet_les_halles,list, metro);
+
         assertThat(result).isEqualTo(trajet);
     }
 
     @Test
     @DisplayName("itineraire passant par liste de point simple (2 points à l'opposée)")
     public void itinerairePassantPar2PointsOpposées(){
+
         Metro metro = new Metro();
         Station chatelet_les_halles = metro.getStations().get(0);
         Station Pigalle = metro.getStations().get(1);
@@ -164,11 +180,13 @@ public class test_itineraire_passant_par_liste_point {
 
         List<Integer> list =  Arrays.asList(La_Defense.getNum_station(),Pantheon.getNum_station());
         List result = algorithme.algorithmeSelonPoint(chatelet_les_halles,Arc_de_Triomphe,list, metro);
+
         assertThat(result).isEqualTo(trajet);
     }
     @Test
     @DisplayName("itineraire passant par liste de point simple (2 points à l'opposée) nsens contraire")
     public void itinerairePassantPar2PointsOpposéesSensContraire(){
+
         Metro metro = new Metro();
         Station chatelet_les_halles = metro.getStations().get(0);
         Station Pigalle = metro.getStations().get(1);
@@ -191,11 +209,13 @@ public class test_itineraire_passant_par_liste_point {
         List<Integer> list =  Arrays.asList(Pantheon.getNum_station(),La_Defense.getNum_station());
         Algorithme algorithme = new Algorithme();
         var result = algorithme.algorithmeSelonPoint(Arc_de_Triomphe,chatelet_les_halles,list, metro);
+
         assertThat(result).isEqualTo(trajet);
     }
     @Test
     @DisplayName("itineraire le plus rapide station arrivee et depart different")
     public void itineraireRapideStationArriveeEtDepartDiff(){
+
         Metro metro = new Metro();
         Station Bercy =  metro.getStations().get(4);
         Station Arc_de_Triomphe = metro.getStations().get(5);
@@ -240,4 +260,5 @@ public class test_itineraire_passant_par_liste_point {
         assertThat(result).isEqualTo(new ArrayList<Integer>());
 
     }
+
 }
