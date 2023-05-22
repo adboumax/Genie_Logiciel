@@ -1,5 +1,7 @@
-package fr.ul.miage.projetGL2023;
+package fr.ul.miage.projetGL2023.model;
 
+
+import fr.ul.miage.projetGL2023.algorithme.Algorithme;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +30,13 @@ public class Metro {
         //Ligne 2
         Station La_Defense = new Station("La Défense",2,7,false,new Liaison(60,false,8), null,30);
         Station Invalides = new Station("Invalides",2,8,false,new Liaison(210,false,4), new Liaison(60,false,7),30);
-        Station Louvre2 = new Station("Louvre",2,4,false,new Liaison(30,false,10), new Liaison(210,false,8),30);
+        Station Louvre2 = new Station("Louvre",2,4,false,new Liaison(30,false,9), new Liaison(210,false,8),30);
         Station Billancourt = new Station("Billancourt",2,9,false,new Liaison(120,false,10), new Liaison(30,false,4),30);
         Station Grigny = new Station("Grigny-la-grande-Borne",2,10,false,new Liaison(120,false,11), new Liaison(120,false,9),30);
         Station Pantheon = new Station("Panthéon",2,11,false,null, new Liaison(120,false,10),30);
 
         //Ligne 3
-        Station Musee_grevin = new Station("Musée grévin",3,12,false, new Liaison(90,false,14), null,30);
+        Station Musee_grevin = new Station("Musée grévin",3,12,false, new Liaison(90,false,13), null,30);
         Station Place_italie = new Station("Place d'italie",3,13,false,new Liaison(180,false,3), new Liaison(90,false,12),30);
         Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30);
         Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,10,false,new Liaison(90,false,14), new Liaison(250,false,3),30);
@@ -57,25 +59,11 @@ public class Metro {
         this.stations = stations;
     }
 
-
-    public List<Integer> Itineraire_passant_liste_point(Station dapart, Station arrivee,List<Station> liste){
-
-        return null;
-    }
-    public List<Integer> Itiniraire_moins_changement(Station depart, Station arrivee){
-
+    public List<Integer> Itiniraire_moins_changement(Station x, Station y) {
         return null;
     }
 
-    public List<Station> Itiniraire_plus_rapide(Station depart, Station arrivee){
-        Metro metro = new Metro();
-        Algorithme algo = new Algorithme();
-
-
-        depart = metro.getStations().get(0);
-        arrivee = metro.getStations().get(12);
-
-        List<Integer> stationList = algo.algoCheminCourt(depart, arrivee);
+    public List<Integer> Itineraire_passant_liste_point(Station x, Station y, List<Station> list) {
         return null;
     }
 }

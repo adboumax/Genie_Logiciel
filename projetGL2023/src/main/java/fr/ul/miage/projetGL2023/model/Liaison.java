@@ -1,4 +1,4 @@
-package fr.ul.miage.projetGL2023;
+package fr.ul.miage.projetGL2023.model;
 
 
 public class Liaison {

@@ -1,5 +1,9 @@
 package fr.ul.miage.projetGL2023;
 
+import fr.ul.miage.projetGL2023.algorithme.Algorithme;
+import fr.ul.miage.projetGL2023.model.Metro;
+import fr.ul.miage.projetGL2023.model.Station;
+
 import java.util.List;
 
 public class Main {
@@ -10,11 +14,13 @@ public class Main {
 
         //A changer en fonction de la géolocalisation
         Station depart = metro.getStations().get(0);
+
         Station arrivee = metro.getStations().get(6);
 
         //Appel de la fonction
-        List<Integer> stationList = algo.algoCheminCourt(depart, arrivee);
+        List<Integer> stationList = algo.algoCheminCourt(depart, arrivee,metro);
         stationList.forEach(System.out::println);
+
 
     }
 }
