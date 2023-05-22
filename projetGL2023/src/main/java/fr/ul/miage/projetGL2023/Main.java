@@ -13,20 +13,18 @@ public class Main {
         Algorithme algo = new Algorithme();
 
         //A changer en fonction de la géolocalisation
-        Station depart = metro.getStations().get(0);
-        metro.getStations().get(1).setProbleme(true);
-        Station arrivee = metro.getStations().get(2);
+
+
+        Station depart = metro.getStations().get(4);
+
+        System.out.println(depart);
+        //metro.getStations().get(1).setProbleme(true);
+        Station arrivee = metro.getStations().get(6);
+        System.out.println(arrivee);
 
         //Appel de la fonction
-        List<Integer> stationList = algo.algoCheminCourt(depart, arrivee, metro);
-        if(stationList != null)
-        {
-            stationList.forEach(System.out::println);
-        }
-        else
-        {
-            System.out.println("Il y a pas de chemin disponible actuellement !");
-        }
+        List<Integer> stationList = algo.algoMoinsChangement(depart, arrivee,metro);
+        System.out.println(stationList);
 
     }
 }
