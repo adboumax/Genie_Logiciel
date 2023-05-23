@@ -12,6 +12,10 @@ public class Main {
         Metro metro = new Metro();
         Algorithme algo = new Algorithme();
 
+        List<Station> stationProche = metro.trouveStationsPlusProche(0, 2);
+
+        stationProche.forEach(System.out::println);
+
         //A changer en fonction de la géolocalisation
         Station depart = metro.getStations().get(0);
         metro.getStations().get(1).setProbleme(true);

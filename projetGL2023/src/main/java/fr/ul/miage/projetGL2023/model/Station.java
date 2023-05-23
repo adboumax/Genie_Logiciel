@@ -4,7 +4,8 @@ package fr.ul.miage.projetGL2023.model;
 public class Station implements Comparable<Station>{
 
         public Station(String name, int ligne, int num_station, boolean probleme,
-                       Liaison liaison_after, Liaison liaison_before, int temps) {
+                       Liaison liaison_after, Liaison liaison_before, int temps,
+                       Double x, Double y) {
             setNom(name);
             setLigne(ligne);
             setLigne(ligne);
@@ -13,6 +14,8 @@ public class Station implements Comparable<Station>{
             setLiaison_after(liaison_after);
             setLiaison_before(liaison_before);
             setTemps(temps);
+            setX(x);
+            setY(y);
         }
 
         public String nom;
@@ -22,6 +25,11 @@ public class Station implements Comparable<Station>{
         public Liaison liaison_after;
         public Liaison liaison_before;
         public int temps;
+        public Double x;
+        public Double y;
+
+
+        // ---
         public double f;
 
 
@@ -80,6 +88,22 @@ public class Station implements Comparable<Station>{
 
         public int getTemps() {
             return temps;
+        }
+
+        public Double getX() {
+            return x;
+        }
+
+        public void setX(Double x) {
+            this.x = x;
+        }
+
+        public Double getY() {
+            return y;
+        }
+
+        public void setY(Double y) {
+            this.y = y;
         }
 
         @Override
