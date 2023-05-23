@@ -85,20 +85,13 @@ public class test_itineraire_moins_changement {
     public void itineraireLeMoinsDeChangementSansCorrespondance(){
         Algorithme ln= new Algorithme();
         Metro metro = new Metro();
-        Station Musee_grevin = new Station("Musée grévin",3,13,false,null,
-                new Liaison(30,false,1),90);
-        Station Place_italie = new Station("Place d'italie",3,14,false,new Liaison(30,false,1),
-                new Liaison(30,false,1),90);
-        Station Montmartre2 = new Station("Montmartre",3,15,false,new Liaison(30,false,1),
-                new Liaison(30,false,1),90);
-        Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,16,false,new Liaison(30,false,1),
-                new Liaison(30,false,1),90);
+        Station Musee_grevin = new Station("Musée grévin",3,12,false, new Liaison(90,false,13), null,30);
+        Station Place_italie = new Station("Place d'italie",3,13,false,new Liaison(180,false,3), new Liaison(90,false,12),30);
+        Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30);
+        Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,10,false,new Liaison(90,false,14), new Liaison(250,false,3),30);
         Station Bastille = new Station("Bastille",3,14,false,new Liaison(180,false,5), new Liaison(90,false,10),30);
-
-        Station Bercy2 = new Station("Bercy",3,17,false,new Liaison(30,false,1),
-                new Liaison(30,false,1),90);
-        Station Champ_de_mars = new Station("Champ de mars",3,18,false,new Liaison(30,false,1),
-                new Liaison(30,false,1),90);
+        Station Bercy2 = new Station("Bercy",3,5,false,new Liaison(90,false,15), new Liaison(180,false,14),30);
+        Station Champ_de_mars = new Station("Champ de mars",3,15,false,null, new Liaison(90,false,5),30);
         List<Integer> trajet =  Arrays.asList(Musee_grevin.getNum_station(),Place_italie.getNum_station(),Montmartre2.getNum_station(),Grigny_la_grande_borne2.getNum_station(),Bastille.getNum_station(),Bercy2.getNum_station(),Champ_de_mars.getNum_station());
 
         var result = ln.algoMoinsChangement(Musee_grevin,Champ_de_mars,metro);
@@ -107,8 +100,7 @@ public class test_itineraire_moins_changement {
     @Test
     @DisplayName("itineraire le moins de changement sans correspondance autre sens")
     public void itineraireLeMoinsDeChangementSansCorrespondanceAutreSens(){
-
-        Station Musee_grevin = new Station("Musée grévin",3,12,false, new Liaison(90,false,14), null,30);
+        Station Musee_grevin = new Station("Musée grévin",3,12,false, new Liaison(90,false,13), null,30);
         Station Place_italie = new Station("Place d'italie",3,13,false,new Liaison(180,false,3), new Liaison(90,false,12),30);
         Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30);
         Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,10,false,new Liaison(90,false,14), new Liaison(250,false,3),30);
