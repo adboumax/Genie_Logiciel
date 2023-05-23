@@ -13,6 +13,7 @@ public class Main {
         Algorithme algo = new Algorithme();
 
         //A changer en fonction de la géolocalisation
+
         Station depart = metro.getStations().get(4);
 
         System.out.println(depart);
@@ -30,6 +31,7 @@ public class Main {
         {
             System.out.println("Il y a pas de chemin disponible actuellement !");
         }*/
+
 
     }
 }

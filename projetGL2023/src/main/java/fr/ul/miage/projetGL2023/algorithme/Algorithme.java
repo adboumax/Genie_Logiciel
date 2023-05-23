@@ -9,7 +9,9 @@ import java.util.stream.Collectors;
 
 public class Algorithme {
 
+
     static Boolean sensAfter=true;
+
     public static List<Integer> algoCheminCourt(Station depart, Station arrivee, Metro metro) {
 
         if (depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station()) {
@@ -105,6 +107,7 @@ public class Algorithme {
     }
 
 
+
     public static List<Station> getStationSelonNum(List<Station> list, int num)
     {
         return list.stream().filter(x -> x.getNum_station() == num)
@@ -119,11 +122,11 @@ public class Algorithme {
             throw new IllegalArgumentException("La station est vide");
         }
 
-        for (Integer i :
-                pointPassage) {
+        for (Integer i :pointPassage) {
             List<Integer> currentPath = algoCheminCourt(current, getStationSelonNum(metro.getStations(), i).get(0), metro);
             if(currentPath != null)
             {
+
                 resultat.addAll(currentPath);
                 current = metro.getStations().get(i);
             } else {
@@ -139,6 +142,7 @@ public class Algorithme {
 
         return resultat;
     }
+
 
 
     public static List<Integer> algoMoinsChangement(Station depart, Station arrivee,Metro metro){
@@ -320,5 +324,6 @@ public class Algorithme {
             }
         }
         return i;
+
     }
 }
