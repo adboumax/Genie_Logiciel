@@ -141,4 +141,7 @@ public class Algorithme {
 
         return resultat;
     }
+    public List<Integer> algoMoinsChangement(Station x, Station y, Metro metro){
+        return null;
+    }
 }
