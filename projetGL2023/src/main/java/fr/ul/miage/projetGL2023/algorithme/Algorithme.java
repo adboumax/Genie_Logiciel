@@ -147,6 +147,7 @@ public class Algorithme {
 
     public static List<Integer> algoMoinsChangement(Station depart, Station arrivee,Metro metro){
         //cas où les station sont sur la même ligne
+        sensAfter=true;
         if (depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station()) {
             throw new IllegalArgumentException("La station est vide");
         }
@@ -156,98 +157,16 @@ public class Algorithme {
         }
 
 
-        if(depart.getLigne()==arrivee.getLigne()){//numero de ligne de départ et arrivée similaire
-           /* if(depart.getNum_station()<arrivee.getNum_station()){
-                for(int i=depart.getNum_station();i<=arrivee.getNum_station();i++){
-                    System.out.println("Station"+i);
-                    chemin.add(i);
-                }
-            }
-            if(depart.getNum_station()> arrivee.getNum_station()){
-                System.out.println(depart.getNum_station());
-                System.out.println(arrivee.getNum_station());
-                for(int i=depart.getNum_station();i>=arrivee.getNum_station();i--){
-                    System.out.println("Station ord"+i);
 
-                    chemin.add(i);
-                }*/
             int i = depart.getNum_station();
 
-            Station actuelle = depart;
+
             chemin.add(depart.getNum_station());
 
             while (i!=arrivee.getNum_station()) {
                     i=TrouverStation(depart,arrivee,i,metro);
-                /*if(metro.getStations().get(i).getLiaison_after()!=null && sensAfter){
-                    System.out.println(metro.getStations().get(i).getLiaison_after().getNum_station());
-                    System.out.println(metro.getStations().get(i).getLiaison_after().getNum_station());
-                }if(metro.getStations().get(i).getLiaison_after()==null && sensAfter){
-                    System.out.println("aie");
-                    sensAfter=false;
-                    i= depart.getNum_station();
-                }
-                if(!sensAfter){
-
-
-                    i=metro.getStations().get(i).getLiaison_before().getNum_station();
-                }*/
                 chemin.add(i);
-
-                System.out.println(chemin);
-                System.out.println(depart.getNum_station());
-                System.out.println(arrivee.getNum_station());
             }
-
-
-
-        }else{
-            System.out.println("erer");
-                System.out.println(depart.getNum_station());
-               // for(int i=depart.getNum_station();i<=arrivee.getNum_station();i++){
-                int i = depart.getNum_station();
-                chemin.add(depart.getNum_station());
-                while (i!=arrivee.getNum_station()) {
-                    i = TrouverStation(depart, arrivee, i, metro);
-
-                    chemin.add(i);
-                    System.out.println("aaa"+i);
-                }
-                    /*while (!Changement) {
-                        if(getStationSelonNum(metro.getStations(),i).get(0).getLiaison_after()!=null && sensAfter){
-                            int num=i;
-                            System.out.println(metro.getStations().get(i).getNum_station());
-                            System.out.println("gg "+metro.getStations().stream()
-                                    .filter(station -> station.getNum_station()==num).map(Station::getNum_station).findFirst());
-
-
-                            i=getStationSelonNum(metro.getStations(),i).get(0).getLiaison_after().getNum_station();
-                            System.out.println("tutu"+i);
-                            System.out.println("jarz");
-                        }
-                        if(getStationSelonNum(metro.getStations(),i).get(0).getLiaison_after()==null && sensAfter){
-                            System.out.println("cedcs");
-                            sensAfter=false;
-                            i= depart.getNum_station();
-                            System.out.println("xcxcx");
-                        }
-                        if(!sensAfter){
-
-
-                            i=getStationSelonNum(metro.getStations(),i).get(0).getLiaison_before().getNum_station();
-                            System.out.println("janou");
-                        }
-                           if(getStationSelonNum(metro.getStations(),i).size()>1){
-                               List<Station> Correspondance=getStationSelonNum(metro.getStations(),i);
-                               System.out.println(Correspondance.get(0).getLigne());
-                               System.out.println(Correspondance.get(1).getLigne());
-                               Changement=true;
-                           }
-
-
-                    }*/
-
-               //
-        }
         //cas où les stations sont sur 2 lignes différents
 
         System.out.println(chemin);
