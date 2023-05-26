@@ -14,11 +14,6 @@ public class Main {
 
         List<Station> stationProche = metro.trouveStationsPlusProche(0, 2);
 
-        stationProche.forEach(System.out::println);
-
-        //A changer en fonction de la géolocalisation
-
-
         Station depart = metro.getStations().get(4);
 
         System.out.println(depart);
