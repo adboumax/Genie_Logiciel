@@ -179,9 +179,39 @@ public class test_itineraire_moins_changement {
 
         assertThat(result).isEqualTo(null);
     }
+    @Test
+    @DisplayName("pb sur le trajer mais contournement possible")
+    public void Itineraireproblemesurtrajet(){
+        Algorithme ln= new Algorithme();
+        Metro metro = new Metro();
+        metro.getStations().get(3).getLiaison_after().setProbleme(true);
+        Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30,0.0,0.0);
+        Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,10,false,new Liaison(90,false,14), new Liaison(250,false,3),30,0.0,0.0);
+        Station Bastille = new Station("Bastille",3,14,false,new Liaison(180,false,5), new Liaison(90,false,10),30,0.0,0.0);
+        Station Bercy2 = new Station("Bercy",3,5,false,new Liaison(90,false,15), new Liaison(180,false,14),30,0.0,0.0);
+        Station Bercy = new Station("Bercy",1,5,false,new Liaison(120,false,6), new Liaison(150,false,4),30,0.0,0.0);
+        var result = ln.algoMoinsChangement(Bercy,Montmartre2, metro);
+        List<Integer> trajet =  Arrays.asList(Bercy2.getNum_station(),Bastille.getNum_station(),Grigny_la_grande_borne2.getNum_station(),Montmartre2.getNum_station());
 
+        assertThat(result).isEqualTo(trajet);
+    }
+
+    @Test
+    @DisplayName("pb sur le trajer mais trajet impossible")
+    public void Itineraireproblemesurtrajetimpossible(){
+        Station chatelet_les_halles = new Station("Chatelet les Halles",1,1,false, new Liaison(120,false,2), null,30,0.0,0.0);
+        Station Montmartre = new Station("Montmartre",1,3,false,new Liaison(90,false,4), new Liaison(120,false,2),30,0.0,0.0);
+        Algorithme ln= new Algorithme();
+        Metro metro = new Metro();
+        metro.getStations().get(1).setProbleme(true);
+
+        var result = ln.algoMoinsChangement(chatelet_les_halles,Montmartre, metro);
+
+        assertThat(result).isEqualTo(null);
+    }
 
 
 
 
 }
+
