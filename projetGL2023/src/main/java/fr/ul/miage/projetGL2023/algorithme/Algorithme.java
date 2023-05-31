@@ -4,6 +4,7 @@ import fr.ul.miage.projetGL2023.model.Liaison;
 import fr.ul.miage.projetGL2023.model.Metro;
 import fr.ul.miage.projetGL2023.model.Station;
 
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -13,8 +14,7 @@ public class Algorithme {
     static Boolean sensAfter=true;
     public static List<Integer> algoCheminCourt(Station depart, Station arrivee, Metro metro) {
 
-
-        if(depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station() ) {
+        if (depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station()) {
             throw new IllegalArgumentException("La station est vide");
         }
 
@@ -41,27 +41,27 @@ public class Algorithme {
                 return refaireChemin(provientDe, actuelle);
             }
             dejaExplore.add(actuelle);
-            List<Liaison> liaisonsAutours = metro.stations.stream().filter(x -> x.liaison_after!=null && x.liaison_after.getNum_station() == actuelle.getNum_station()
-                    && !x.isProbleme() && !actuelle.getLiaison_before().isProbleme())
+            List<Liaison> liaisonsAutours = metro.stations.stream().filter(x -> x.liaison_after != null && x.liaison_after.getNum_station() == actuelle.getNum_station()
+                            && !x.isProbleme() && !actuelle.getLiaison_before().isProbleme())
                     .map(x -> actuelle.getLiaison_before())
                     .collect(Collectors.toList());
 
-            liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.liaison_before!=null && x.liaison_before.getNum_station() == actuelle.getNum_station()
-                    && !x.isProbleme() && !actuelle.getLiaison_after().isProbleme())
+            liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.liaison_before != null && x.liaison_before.getNum_station() == actuelle.getNum_station()
+                            && !x.isProbleme() && !actuelle.getLiaison_after().isProbleme())
                     .map(x -> actuelle.getLiaison_after())
                     .collect(Collectors.toList()));
 
             liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.getNum_station() == actuelle.getNum_station()
                             && x.getLigne() != actuelle.getLigne()
                             && !x.isProbleme()
-                            && x.liaison_after!=null)
+                            && x.liaison_after != null)
                     .map(x -> x.getLiaison_before())
                     .collect(Collectors.toList()));
 
             liaisonsAutours.addAll(metro.stations.stream().filter(x -> x.getNum_station() == actuelle.getNum_station()
                             && x.getLigne() != actuelle.getLigne()
                             && !x.isProbleme()
-                            && x.liaison_before!=null)
+                            && x.liaison_before != null)
                     .map(x -> x.getLiaison_after())
                     .collect(Collectors.toList()));
 
@@ -109,49 +109,47 @@ public class Algorithme {
 
 
     public static List<Station> getStationSelonNum(List<Station> list, int num)
-
     {
         return list.stream().filter(x -> x.getNum_station() == num)
                 .collect(Collectors.toList());
     }
 
-    public List<Integer> algorithmeSelonPoint(Station depart, Station arrivee, List<Integer> pointPassage, Metro metro)
-    {
-        Station current         = depart;
+    public List<Integer> algorithmeSelonPoint(Station depart, Station arrivee, List<Integer> pointPassage, Metro metro) {
+        Station current = depart;
         ArrayList<Integer> resultat = new ArrayList<Integer>();
 
-        if(depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station() ) {
+        if (depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station()) {
             throw new IllegalArgumentException("La station est vide");
         }
 
-        for (Integer i:
-                pointPassage) {
-
+        for (Integer i :pointPassage) {
             List<Integer> currentPath = algoCheminCourt(current, getStationSelonNum(metro.getStations(), i).get(0), metro);
-
             if(currentPath != null)
             {
+
                 resultat.addAll(currentPath);
                 current = metro.getStations().get(i);
-            }
-            else {
+            } else {
                 break;
             }
 
         }
 
-        List<Integer> currentPath = algoCheminCourt(current, arrivee,metro);
-        if(currentPath != null)
-        {
+        List<Integer> currentPath = algoCheminCourt(current, arrivee, metro);
+        if (currentPath != null) {
             resultat.addAll(currentPath);
         }
 
         return resultat;
     }
 
+
+
     public static List<Integer> algoMoinsChangement(Station depart, Station arrivee,Metro metro){
-        sensAfter=true;
         //cas où les station sont sur la même ligne
+        List<Station> station =SupprimerLiaisonPb(metro.getStations());
+        System.out.print(station);
+
         sensAfter=true;
         if (depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station()) {
             throw new IllegalArgumentException("La station est vide");
@@ -160,20 +158,29 @@ public class Algorithme {
         if(depart.isProbleme()|| arrivee.isProbleme()){
             return null;
         }
-            int i = depart.getNum_station();
-            chemin.add(depart.getNum_station());
-            while (i!=arrivee.getNum_station()) {
-                    i=TrouverStation(depart,arrivee,i,metro);
-                chemin.add(i);
-            }
+        int i = depart.getNum_station();
+        chemin.add(depart.getNum_station());
+        while (i!=arrivee.getNum_station()) {
+            i=TrouverStation(depart,arrivee,i,metro);
+            if(i==-1)return null;
+            chemin.add(i);
+        }
+
+
+        //cas où les stations sont sur 2 lignes différents
+
+        System.out.println(chemin);
         return chemin;
     }
     public static int TrouverStation(Station depart,Station arrivee, int i, Metro metro){
+        System.out.println(metro);
 
+        boolean ChangementLigne=false;
+        int num=i;
         if(getStationSelonNum(metro.getStations(),i).get(0).getLiaison_after()!=null && sensAfter){
-            int num=i;
+            System.out.println("lelele");
             if(getStationSelonNum(metro.getStations(),i).size()>1){
-               if( getStationSelonNum(metro.getStations(),i).get(0).getLigne()== arrivee.getLigne()){
+                if( getStationSelonNum(metro.getStations(),i).get(0).getLigne()== arrivee.getLigne()){
                     i=getStationSelonNum(metro.getStations(),i).get(0).getLiaison_after().getNum_station();
 
                 }else if(getStationSelonNum(metro.getStations(),i).get(1).getLigne()== arrivee.getLigne()){
@@ -184,18 +191,23 @@ public class Algorithme {
 
                 }else if(getStationSelonNum(metro.getStations(),i).get(1).getLigne()== depart.getLigne()){
                     i=getStationSelonNum(metro.getStations(),i).get(1).getLiaison_after().getNum_station();
-
                 }
             }
-           else//(getStationSelonNum(metro.getStations(),i).size()==1){
+            else//(getStationSelonNum(metro.getStations(),i).size()==1){
             {i=getStationSelonNum(metro.getStations(),i).get(0).getLiaison_after().getNum_station();
-           }
+            }
+
+            if(!(getStationSelonNum(metro.getStations(),i).get(0).getLiaison_after()==null && sensAfter && i !=arrivee.getNum_station())) return i;
         }
         if(getStationSelonNum(metro.getStations(),i).get(0).getLiaison_after()==null && sensAfter && i !=arrivee.getNum_station()){
             sensAfter=false;
             i= depart.getNum_station();
+            System.out.println("retour CA2");
+            //if(i!=num)return i;
         }
-        if(!sensAfter){
+
+        System.out.println(sensAfter);
+        if(!sensAfter &&  (getStationById(metro.getStations(),i)).getLiaison_before()!=null){
             if(getStationSelonNum(metro.getStations(),i).size()>1){
                 if( getStationSelonNum(metro.getStations(),i).get(0).getLigne()== arrivee.getLigne()){
                     i=getStationSelonNum(metro.getStations(),i).get(0).getLiaison_before().getNum_station();
@@ -207,10 +219,60 @@ public class Algorithme {
                     i=getStationSelonNum(metro.getStations(),i).get(1).getLiaison_before().getNum_station();
                 }
             }
-            else
+            else//(getStationSelonNum(metro.getStations(),i).size()==1){
             {i=getStationSelonNum(metro.getStations(),i).get(0).getLiaison_before().getNum_station();
             }
+            if(i!=num)return i;
         }
-        return i;
+        for(int z =0; z<(getStationSelonNum(metro.getStations(),i)).size();z++){
+            System.out.println("ronald"+(getStationSelonNum(metro.getStations(),i)).size());
+            System.out.println((getStationSelonNum(metro.getStations(),i).get(z)).getLigne());
+            if((getStationById(metro.getStations(),i).getLigne()!=(getStationSelonNum(metro.getStations(),i).get(z)).getLigne())){
+                i=getStationSelonNum(metro.getStations(),i).get(z).getLiaison_before().getNum_station();
+
+                //i=getStationSelonNum(metro.getStations(),i).get(z).getLiaison_after().getNum_station();
+                System.out.println("retour C");
+                return i;
+                //station avant et apres correspondance
+            }
+
+        }
+
+
+        System.out.println(getStationById(metro.getStations(),i));
+        System.out.println("retour D");
+       /* if(i==num){
+            for (int p=i;p<metro.getStations().size();p++){
+                if(metro.getStations().get(i).getLigne()==(getStationSelonNum(metro.getStations(),i).get(p)).getLigne()
+            }
+        }*/
+        return -1;
     }
+    public static Station getStationById(List<Station> list,int num){
+        for (Station stations : list) {
+            if (stations.getNum_station() == num) {
+                return stations;
+            }
+        }
+        return null;
+    }
+    public static List<Station> SupprimerLiaisonPb(List<Station> list){
+        int size = list.size();
+        for (int i = 0; i < size; i++) {
+            Station currentStation = list.get(i);
+            if (currentStation.isProbleme()) {
+                if (i > 0) {
+                    list.get(i-1).setLiaison_after(null);
+                }
+                if (i < size - 1) {
+                    list.get(i + 1).setLiaison_before(null);
+                }
+                list.get(i).setLiaison_after(null);
+                list.get(i).setLiaison_before(null);
+            }
+        }
+        return list;
+    }
+
 }
+

@@ -68,12 +68,12 @@ public class test_itineraire_moins_changement {
     public void itineraireRapideSimpleAutreSens(){
         Algorithme ln= new Algorithme();
         Metro metro = new Metro();
-        Station chatelet_les_halles =  new Station("Chatelet les Halles",1,1,false, new Liaison(120,false,2), null,30);
-        Station Arc_de_Triomphe = new Station("Arc de triomphe",1,6,false,null, new Liaison(120,false,5),30);
-        Station Pigalle = new Station("Pigalle",1,2,false,new Liaison(120,false,3), new Liaison(120,false,1),30);
-        Station Montmartre = new Station("Montmartre",1,3,false,new Liaison(90,false,4), new Liaison(120,false,2),30);
-        Station Louvre = new Station("Louvre",1,4,false,new Liaison(150,false,5), new Liaison(90,false,3),30);
-        Station Bercy = new Station("Bercy",1,5,false,new Liaison(120,false,6), new Liaison(150,false,4),30);
+        Station chatelet_les_halles =  new Station("Chatelet les Halles",1,1,false, new Liaison(120,false,2), null,30,0.0,0.0);
+        Station Arc_de_Triomphe = new Station("Arc de triomphe",1,6,false,null, new Liaison(120,false,5),30,0.0,0.0);
+        Station Pigalle = new Station("Pigalle",1,2,false,new Liaison(120,false,3), new Liaison(120,false,1),30,0.0,0.0);
+        Station Montmartre = new Station("Montmartre",1,3,false,new Liaison(90,false,4), new Liaison(120,false,2),30,0.0,0.0);
+        Station Louvre = new Station("Louvre",1,4,false,new Liaison(150,false,5), new Liaison(90,false,3),30,0.0,0.0);
+        Station Bercy = new Station("Bercy",1,5,false,new Liaison(120,false,6), new Liaison(150,false,4),30,0.0,0.0);
         List<Integer> trajet =  Arrays.asList(Arc_de_Triomphe.getNum_station(),Bercy.getNum_station(),Louvre.getNum_station(),Montmartre.getNum_station(),Pigalle.getNum_station(),chatelet_les_halles.getNum_station());
 
         var result = ln.algoMoinsChangement(Arc_de_Triomphe,chatelet_les_halles,metro);
@@ -85,10 +85,10 @@ public class test_itineraire_moins_changement {
     public void itineraireLeMoinsDeChangementSansCorrespondance(){
         Algorithme ln= new Algorithme();
         Metro metro = new Metro();
-        Station Musee_grevin = new Station("Musée grévin",3,12,false, new Liaison(90,false,13), null,30);
-        Station Place_italie = new Station("Place d'italie",3,13,false,new Liaison(180,false,3), new Liaison(90,false,12),30);
-        Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30);
-        Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,10,false,new Liaison(90,false,14), new Liaison(250,false,3),30);
+        Station Musee_grevin = new Station("Musée grévin",3,12,false, new Liaison(90,false,13), null,30,0.0,0.0);
+        Station Place_italie = new Station("Place d'italie",3,13,false,new Liaison(180,false,3), new Liaison(90,false,12),30,0.0,0.0);
+        Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30,0.0,0.0);
+        Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,10,false,new Liaison(90,false,14), new Liaison(250,false,3),30,0.0,0.0);
 
         Station Bastille = new Station("Bastille",3,14,false,new Liaison(180,false,5), new Liaison(90,false,10),30,0.0,0.0);
         Station Bercy2 = new Station("Bercy",3,5,false,new Liaison(90,false,15), new Liaison(180,false,14),30,0.0,0.0);
@@ -133,10 +133,10 @@ public class test_itineraire_moins_changement {
     @Test
     @DisplayName("itineraire le moins de changement avec une correspondance autre sens")
     public void itineraireLeMoinsDeChangementAvecUneCorrespondanceAutreSens(){
-        Station La_Defense = new Station("La Défense",2,7,false,new Liaison(60,false,8), null,30);
-        Station Invalides = new Station("Invalides",2,8,false,new Liaison(210,false,4), new Liaison(60,false,7),30);
-        Station Louvre2 = new Station("Louvre",2,4,false,new Liaison(30,false,9), new Liaison(210,false,8),30);
-        Station Bercy = new Station("Bercy",1,5,false,new Liaison(120,false,6), new Liaison(150,false,4),30);
+        Station La_Defense = new Station("La Défense",2,7,false,new Liaison(60,false,8), null,30,0.0,0.0);
+        Station Invalides = new Station("Invalides",2,8,false,new Liaison(210,false,4), new Liaison(60,false,7),30,0.0,0.0);
+        Station Louvre2 = new Station("Louvre",2,4,false,new Liaison(30,false,9), new Liaison(210,false,8),30,0.0,0.0);
+        Station Bercy = new Station("Bercy",1,5,false,new Liaison(120,false,6), new Liaison(150,false,4),30,0.0,0.0);
 
 
         List<Integer> trajet =  Arrays.asList(Bercy.getNum_station(),Louvre2.getNum_station(),Invalides.getNum_station(),La_Defense.getNum_station());
@@ -148,8 +148,8 @@ public class test_itineraire_moins_changement {
     @Test
     @DisplayName("itineraire Moins changement station arrivee et depart different")
     public void itineraireMoinschangementStationArriveeEtDepartDiff(){
-        Station x =new Station("Arc de triomphe",1,6,false,null, new Liaison(120,false,5),30);
-        Station y =new Station("Arc de triomphe",1,6,false,null, new Liaison(120,false,5),30);
+        Station x =new Station("Arc de triomphe",1,6,false,null, new Liaison(120,false,5),30,0.0,0.0);
+        Station y =new Station("Arc de triomphe",1,6,false,null, new Liaison(120,false,5),30,0.0,0.0);
         Algorithme ln= new Algorithme();
         Metro metro = new Metro();
         assertThatThrownBy(()-> ln.algoMoinsChangement(x, y,metro)).isExactlyInstanceOf(IllegalArgumentException.class);
@@ -157,8 +157,8 @@ public class test_itineraire_moins_changement {
     @Test
     @DisplayName("itineraire moins changement station depart pb")
     public void ItinerairemoinsDepartStationDepPb(){
-        Station Arc_de_Triomphe =new Station("Arc de triomphe",1,6,true,null, new Liaison(120,false,5),30);
-        Station Bercy = new Station("Bercy",1,5,false,new Liaison(120,false,6), new Liaison(150,false,4),30);
+        Station Arc_de_Triomphe =new Station("Arc de triomphe",1,6,true,null, new Liaison(120,false,5),30,0.0,0.0);
+        Station Bercy = new Station("Bercy",1,5,false,new Liaison(120,false,6), new Liaison(150,false,4),30,0.0,0.0);
         Algorithme ln= new Algorithme();
         Metro metro = new Metro();
 
@@ -170,8 +170,8 @@ public class test_itineraire_moins_changement {
     @Test
     @DisplayName("itineraire moins changement station arrivé pb")
     public void ItinerairemoinschangementArriveePB(){
-        Station Arc_de_Triomphe =new Station("Arc de triomphe",1,6,false,null, new Liaison(120,false,5),30);
-        Station Bercy = new Station("Bercy",1,5,true,new Liaison(120,false,6), new Liaison(150,false,4),30);
+        Station Arc_de_Triomphe =new Station("Arc de triomphe",1,6,false,null, new Liaison(120,false,5),30,0.0,0.0);
+        Station Bercy = new Station("Bercy",1,5,true,new Liaison(120,false,6), new Liaison(150,false,4),30,0.0,0.0);
         Algorithme ln= new Algorithme();
         Metro metro = new Metro();
 
@@ -179,9 +179,39 @@ public class test_itineraire_moins_changement {
 
         assertThat(result).isEqualTo(null);
     }
+    @Test
+    @DisplayName("pb sur le trajer mais contournement possible")
+    public void Itineraireproblemesurtrajet(){
+        Algorithme ln= new Algorithme();
+        Metro metro = new Metro();
+        metro.getStations().get(3).getLiaison_after().setProbleme(true);
+        Station Montmartre2 = new Station("Montmartre",3,3,false,new Liaison(250,false,10), new Liaison(180,false,13),30,0.0,0.0);
+        Station Grigny_la_grande_borne2 = new Station("Grigny-la-grande-borne",3,10,false,new Liaison(90,false,14), new Liaison(250,false,3),30,0.0,0.0);
+        Station Bastille = new Station("Bastille",3,14,false,new Liaison(180,false,5), new Liaison(90,false,10),30,0.0,0.0);
+        Station Bercy2 = new Station("Bercy",3,5,false,new Liaison(90,false,15), new Liaison(180,false,14),30,0.0,0.0);
+        Station Bercy = new Station("Bercy",1,5,false,new Liaison(120,false,6), new Liaison(150,false,4),30,0.0,0.0);
+        var result = ln.algoMoinsChangement(Bercy,Montmartre2, metro);
+        List<Integer> trajet =  Arrays.asList(Bercy2.getNum_station(),Bastille.getNum_station(),Grigny_la_grande_borne2.getNum_station(),Montmartre2.getNum_station());
 
+        assertThat(result).isEqualTo(trajet);
+    }
+
+    @Test
+    @DisplayName("pb sur le trajer mais trajet impossible")
+    public void Itineraireproblemesurtrajetimpossible(){
+        Station chatelet_les_halles = new Station("Chatelet les Halles",1,1,false, new Liaison(120,false,2), null,30,0.0,0.0);
+        Station Montmartre = new Station("Montmartre",1,3,false,new Liaison(90,false,4), new Liaison(120,false,2),30,0.0,0.0);
+        Algorithme ln= new Algorithme();
+        Metro metro = new Metro();
+        metro.getStations().get(1).setProbleme(true);
+
+        var result = ln.algoMoinsChangement(chatelet_les_halles,Montmartre, metro);
+
+        assertThat(result).isEqualTo(null);
+    }
 
 
 
 
 }
+

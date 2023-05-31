@@ -16,9 +16,11 @@ public class Main {
 
 
 
+
         int choix = 0;
         Station depart;
         Station arrivee;
+
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("=== Bienvenue sur l'application metro ! ===");
