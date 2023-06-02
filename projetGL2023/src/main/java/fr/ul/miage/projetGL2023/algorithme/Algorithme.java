@@ -148,8 +148,6 @@ public class Algorithme {
     public static List<Integer> algoMoinsChangement(Station depart, Station arrivee,Metro metro){
         //cas où les station sont sur la même ligne
         List<Station> station =SupprimerLiaisonPb(metro.getStations());
-        System.out.print(station);
-
         sensAfter=true;
         if (depart == null || arrivee == null || depart.getNum_station() == arrivee.getNum_station()) {
             throw new IllegalArgumentException("La station est vide");
@@ -165,20 +163,12 @@ public class Algorithme {
             if(i==-1)return null;
             chemin.add(i);
         }
-
-
-        //cas où les stations sont sur 2 lignes différents
-
-        System.out.println(chemin);
         return chemin;
     }
     public static int TrouverStation(Station depart,Station arrivee, int i, Metro metro){
-        System.out.println(metro);
-
         boolean ChangementLigne=false;
         int num=i;
         if(getStationSelonNum(metro.getStations(),i).get(0).getLiaison_after()!=null && sensAfter){
-            System.out.println("lelele");
             if(getStationSelonNum(metro.getStations(),i).size()>1){
                 if( getStationSelonNum(metro.getStations(),i).get(0).getLigne()== arrivee.getLigne()){
                     i=getStationSelonNum(metro.getStations(),i).get(0).getLiaison_after().getNum_station();
@@ -202,11 +192,8 @@ public class Algorithme {
         if(getStationSelonNum(metro.getStations(),i).get(0).getLiaison_after()==null && sensAfter && i !=arrivee.getNum_station()){
             sensAfter=false;
             i= depart.getNum_station();
-            System.out.println("retour CA2");
-            //if(i!=num)return i;
         }
 
-        System.out.println(sensAfter);
         if(!sensAfter &&  (getStationById(metro.getStations(),i)).getLiaison_before()!=null){
             if(getStationSelonNum(metro.getStations(),i).size()>1){
                 if( getStationSelonNum(metro.getStations(),i).get(0).getLigne()== arrivee.getLigne()){
@@ -225,27 +212,12 @@ public class Algorithme {
             if(i!=num)return i;
         }
         for(int z =0; z<(getStationSelonNum(metro.getStations(),i)).size();z++){
-            System.out.println("ronald"+(getStationSelonNum(metro.getStations(),i)).size());
-            System.out.println((getStationSelonNum(metro.getStations(),i).get(z)).getLigne());
             if((getStationById(metro.getStations(),i).getLigne()!=(getStationSelonNum(metro.getStations(),i).get(z)).getLigne())){
                 i=getStationSelonNum(metro.getStations(),i).get(z).getLiaison_before().getNum_station();
-
-                //i=getStationSelonNum(metro.getStations(),i).get(z).getLiaison_after().getNum_station();
-                System.out.println("retour C");
                 return i;
-                //station avant et apres correspondance
             }
 
         }
-
-
-        System.out.println(getStationById(metro.getStations(),i));
-        System.out.println("retour D");
-       /* if(i==num){
-            for (int p=i;p<metro.getStations().size();p++){
-                if(metro.getStations().get(i).getLigne()==(getStationSelonNum(metro.getStations(),i).get(p)).getLigne()
-            }
-        }*/
         return -1;
     }
     public static Station getStationById(List<Station> list,int num){
