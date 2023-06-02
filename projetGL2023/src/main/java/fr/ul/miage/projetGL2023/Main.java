@@ -15,8 +15,6 @@ public class Main {
         Algorithme algo = new Algorithme();
 
 
-
-
         int choix = 0;
         Station depart;
         Station arrivee;
@@ -57,7 +55,11 @@ public class Main {
 
                 case 2:
                     System.out.println("Itinéraire avec le moins de changement de ligne");
-
+                    System.out.println("Entrez la station de départ : ");
+                    depart = metro.getStations().get(scanner.nextInt());
+                    System.out.println("Entrez la station d'arrivée : ");
+                    arrivee = metro.getStations().get(scanner.nextInt());
+                    algo.algoMoinsChangement(depart, arrivee, metro);
                     break;
 
                 case 3:
