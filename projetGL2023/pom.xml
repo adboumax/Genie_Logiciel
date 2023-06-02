@@ -12,6 +12,8 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.bindist.dir>${project.basedir}/bindist</project.bindist.dir>
+        <project.main.classname>${project.groupId}.${project.artifactId}.Main</project.main.classname>
         <assertj.version>3.24.2</assertj.version>
         <junit.version>5.9.2</junit.version>
         <mockito.version>5.1.1</mockito.version>
@@ -100,7 +102,28 @@
                     </execution>
                 </executions>
             </plugin>
-
+            <plugin>
+                <!-- create a distribution archive -->
+                <!-- mvn install ou assembly:single -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>make-zip</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptors>
+                                <descriptor>zip.xml</descriptor>
+                            </descriptors>
+                            <appendAssemblyId>true</appendAssemblyId>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
